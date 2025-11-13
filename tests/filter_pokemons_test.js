@@ -2,6 +2,11 @@ import { assertEquals } from "jsr:@std/assert";
 import { filterByType } from "../src/filter_pokemons.js";
 import { pokemons } from "../src/pokedox.js";
 
+export const dbg = (x) => {
+  console.log(x);
+  return x;
+}
+
 Deno.test("criteria - fire", () =>
   assertEquals(filterByType(pokemons, "fire"), [
     {

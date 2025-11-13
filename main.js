@@ -1,3 +1,6 @@
+import { types } from "./src/filter_criteria.js";
+import { filterPokemons } from "./src/filter_pokemons.js";
+
 const INPUT_FORMAT = `
 f: Fire
 g: Grass
@@ -10,11 +13,23 @@ s: Steel
 e: Electric
 `;
 
+const getInput = () => {
+  console.log(`Filter Pokemons By Type\n${INPUT_FORMAT}`);
+
+  return prompt("Enter Selection: ");
+};
+
+const automate = () =>
+  Object.entries(types).forEach((type) => {
+    const filtered = filterPokemons(type[0]);
+    console.log(type[1]);
+    console.log(filtered);
+  });
+
 const main = () => {
   console.clear();
-  console.log(`Filter Pokemons By\n${INPUT_FORMAT}`);
-
-  const userIput = prompt('Enter Selection: ');
+  const userInput = getInput();
+  console.log(filterPokemons(userInput));
 };
 
 main();

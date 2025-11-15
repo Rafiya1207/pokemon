@@ -14,7 +14,7 @@ const isValidOption = (userInput, categoryOptions) => {
 const getOptionInput = (
   categoryOptions,
   category,
-  optionMsg = "Enter Option: ",
+  optionMsg = "Enter option: ",
 ) => {
   console.log(
     `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
@@ -23,10 +23,10 @@ const getOptionInput = (
   for (const tag in categoryOptions) {
     console.log(`${tag}: ${categoryOptions[tag]}`);
   }
-  return prompt(optionMsg);
+  return prompt(`\n${optionMsg}`);
 };
 
-const getFilterCategory = (message = "Enter Category: ") => {
+const getFilterCategory = (message = "Enter category to filter by: ") => {
   console.log(`Type\nWeakness\n`);
 
   return prompt(message);
@@ -36,7 +36,7 @@ const validateCategory = (userInput) => {
   if (isValidCategory(userInput)) {
     return userInput;
   }
-  return validateCategory(getFilterCategory("Enter Valid Category: "));
+  return validateCategory(getFilterCategory("Enter valid category: "));
 };
 
 const validateOption = (userInput, categoryOptions, category) => {
@@ -45,7 +45,7 @@ const validateOption = (userInput, categoryOptions, category) => {
   }
 
   return validateOption(
-    getOptionInput(categoryOptions, category, "Enter Valid Option: "),
+    getOptionInput(categoryOptions, category, "Enter valid option: "),
     categoryOptions,
     category,
   );

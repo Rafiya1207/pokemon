@@ -1,4 +1,4 @@
-import { typeMap, weaknessMap } from "./filter_criteria.js";
+import { typeMap, weaknessMap } from "./filter_category_maps.js";
 import { pokemons } from "./pokedox.js";
 
 export const selectCategoryMap = (category) => {

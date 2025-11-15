@@ -10,7 +10,7 @@ export const types = {
   e: "Electric",
 };
 
-export const weekness = {
+export const weakness = {
   f: "Fire",
   fl: "Flying",
   w: "Water",

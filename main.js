@@ -1,5 +1,5 @@
-import { types, weekness } from "./src/filter_criteria.js";
-import { filterPokemons } from "./src/filter_pokemons.js";
+import { types, weakness } from "./src/filter_criteria.js";
+import { filterPokemonsBy, selectCategory } from "./src/filter_pokemons.js";
 
 const getInput = (categories, category) => {
   console.log(
@@ -9,13 +9,13 @@ const getInput = (categories, category) => {
     console.log(`${key}: ${categories[key]}`);
   }
 
-  return prompt("Enter Selection: ");
+  return prompt("Enter Selection: ") || 'gr';
 };
 
 const getCategoryInput = () => {
-  console.log(`Type\nWeekness\n`);
+  console.log(`Type\nWeakness\n`);
 
-  return prompt("Enter Category: ");
+  return prompt("Enter Category: ") || 'weakness';
 };
 
 const automate = () =>
@@ -25,20 +25,12 @@ const automate = () =>
     console.log(filtered);
   });
 
-const selectCategory = (category) => {
-  const categories = {
-    "weekness": weekness,
-    "type": types,
-  };
-  return categories[category];
-};
-
 const main = () => {
   console.clear();
-  const category = getCategoryInput();
-  const categories = selectCategory(category.toLowerCase());
+  const category = getCategoryInput().toLowerCase();
+  const categories = selectCategory(category);
   const userInput = getInput(categories, category);
-  console.log(filterPokemons(userInput));
+  console.log(filterPokemonsBy(category, userInput));
 };
 
 main();

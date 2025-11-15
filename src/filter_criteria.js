@@ -1,4 +1,4 @@
-export const types = {
+export const typeMap = {
   f: "Fire",
   g: "Grass",
   n: "Normal",
@@ -10,19 +10,19 @@ export const types = {
   e: "Electric",
 };
 
-export const weakness = {
+export const weaknessMap = {
   f: "Fire",
   fl: "Flying",
   w: "Water",
   e: "Electric",
-  r: 'Rock',
-  i: 'Ice',
-  fa: 'Fair',
+  r: "Rock",
+  i: "Ice",
+  fa: "Fair",
   p: "Poison",
   s: "Steel",
-  py: 'Psyhic',
+  py: "Psyhic",
   b: "Bug",
-  g: 'Grass',
-  gr: 'Ground',
-  ft: 'Fighting'
-}
+  g: "Grass",
+  gr: "Ground",
+  ft: "Fighting",
+};

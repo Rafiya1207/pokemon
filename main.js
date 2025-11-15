@@ -11,7 +11,11 @@ const isValidOption = (userInput, categoryOptions) => {
   return Object.keys(categoryOptions).some((key) => key === userInput);
 };
 
-const getOptionInput = (categoryOptions, category, optionMsg) => {
+const getOptionInput = (
+  categoryOptions,
+  category,
+  optionMsg = "Enter Option: ",
+) => {
   console.log(
     `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
   );
@@ -35,26 +39,35 @@ const validateCategory = (userInput) => {
   return validateCategory(getFilterCategory("Enter Valid Category: "));
 };
 
-const getFilterInputs = (
-  optionMsg = "Enter Option: ",
-) => {
+const validateOption = (userInput, categoryOptions, category) => {
+  if (isValidOption(userInput, categoryOptions)) {
+    return userInput;
+  }
+
+  return validateOption(
+    getOptionInput(categoryOptions, category, "Enter Valid Option: "),
+    categoryOptions,
+    category,
+  );
+};
+
+const getFilterInputs = () => {
   const userCategory = getFilterCategory().toLowerCase();
   const category = validateCategory(userCategory);
 
   const categoryOptions = selectCategoryMap(category);
-  const userOption = getOptionInput(categoryOptions, category, optionMsg);
 
-  if (isValidOption(userOption, categoryOptions)) {
-    return { category, userOption };
-  }
-
-  return getFilterInputs("Enter Valid Category: ", optionMsg);
+  const userOption = getOptionInput(categoryOptions, category);
+  const option = validateOption(userOption, categoryOptions, category);
+  
+  return { category, option };
 };
 
 const main = () => {
   console.clear();
-  const { category, userInput } = getFilterInputs();
-  console.log(filterPokemons(category, userInput));
+  const { category, option } = getFilterInputs();
+  
+  console.log(filterPokemons(category, option));
 };
 
 main();

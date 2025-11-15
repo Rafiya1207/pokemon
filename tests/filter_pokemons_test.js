@@ -1,48 +1,31 @@
 import { assertEquals } from "jsr:@std/assert";
-// import { filterByTy } from "../src/filter_pokemons.js";
-import { pokemons } from "../src/pokedox.js";
+import { filterPokemons } from "../src/filter-pokemons/filter_pokemons.js";
 
 export const dbg = (x) => {
   console.log(x);
   return x;
-}
+};
 
-// Deno.test("criteria - fire", () =>
-//   assertEquals(filterByType(pokemons, "fire"), [
-//     {
-//       name: "charmander",
-//       id: "#0004",
-//       category: "lizard",
-//       abilities: "blaze",
-//       type: ["fire"],
-//       weakness: ["water", "ground", "rock"],
-//     },
-//   ]));
+Deno.test("filter by type - fire", () =>
+  assertEquals(filterPokemons("type", "f"), [
+    {
+      name: "charmander",
+      id: "#0004",
+      category: "lizard",
+      abilities: "blaze",
+      type: ["fire"],
+      weakness: ["water", "ground", "rock"],
+    },
+  ]));
 
-// Deno.test("criteria - grass", () =>
-//   assertEquals(filterByType(pokemons, "grass"), [
-//     {
-//       name: "bulbasur",
-//       id: "#0001",
-//       category: "seed",
-//       abilities: "overgrow",
-//       type: ["grass", "poison"],
-//       weakness: ["fire", "ice", "flying", "psychic"],
-//     },
-//     {
-//       name: "oddish",
-//       id: "#0043",
-//       category: "weed",
-//       abilities: "chlorophll",
-//       type: ["grass", "poison"],
-//       weakness: ["fire", "ice", "flying", "psyhic"],
-//     },
-//     {
-//       name: "parasect",
-//       id: "#0047",
-//       category: "mushroom",
-//       abilities: "effect spore",
-//       type: ["bug", "grass"],
-//       weakness: ["fire", "ice", "poison", "bug", "flying", "rock"],
-//     },
-//   ]));
+Deno.test("filter by weakness - grass", () =>
+  assertEquals(filterPokemons("weakness", "g"), [
+    {
+      name: "golduck",
+      id: "#0055",
+      category: "duck",
+      abilities: "cloud nine",
+      type: ["water"],
+      weakness: ["grass", "electric"],
+    },
+  ]));

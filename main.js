@@ -1,22 +1,21 @@
-import { types } from "./src/filter_criteria.js";
+import { types, weekness } from "./src/filter_criteria.js";
 import { filterPokemons } from "./src/filter_pokemons.js";
 
-const INPUT_FORMAT = `
-f: Fire
-g: Grass
-n: Normal
-fl: Flying
-p: Poison
-w: Water
-b: Bug
-s: Steel
-e: Electric
-`;
-
-const getInput = () => {
-  console.log(`Filter Pokemons By Type\n${INPUT_FORMAT}`);
+const getInput = (categories, category) => {
+  console.log(
+    `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
+  );
+  for (const key in categories) {
+    console.log(`${key}: ${categories[key]}`);
+  }
 
   return prompt("Enter Selection: ");
+};
+
+const getCategoryInput = () => {
+  console.log(`Type\nWeekness\n`);
+
+  return prompt("Enter Category: ");
 };
 
 const automate = () =>
@@ -26,9 +25,19 @@ const automate = () =>
     console.log(filtered);
   });
 
+const selectCategory = (category) => {
+  const categories = {
+    "weekness": weekness,
+    "type": types,
+  };
+  return categories[category];
+};
+
 const main = () => {
   console.clear();
-  const userInput = getInput();
+  const category = getCategoryInput();
+  const categories = selectCategory(category.toLowerCase());
+  const userInput = getInput(categories, category);
   console.log(filterPokemons(userInput));
 };
 

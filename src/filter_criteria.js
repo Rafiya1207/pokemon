@@ -9,3 +9,20 @@ export const types = {
   s: "Steel",
   e: "Electric",
 };
+
+export const weekness = {
+  f: "Fire",
+  fl: "Flying",
+  w: "Water",
+  e: "Electric",
+  r: 'Rock',
+  i: 'Ice',
+  fa: 'Fair',
+  p: "Poison",
+  s: "Steel",
+  py: 'Psyhic',
+  b: "Bug",
+  g: 'Grass',
+  gr: 'Ground',
+  ft: 'Fighting'
+}

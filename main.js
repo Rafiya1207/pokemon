@@ -16,8 +16,9 @@ const getOptionInput = (
   category,
   optionMsg = "Enter option: ",
 ) => {
+  console.clear();
   console.log(
-    `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
+    `Filter Pokemons By ${category[0].toUpperCase() + category.slice(1)}\n`,
   );
 
   for (const tag in categoryOptions) {
@@ -27,6 +28,7 @@ const getOptionInput = (
 };
 
 const getFilterCategory = (message = "Enter category to filter by: ") => {
+  console.clear();
   console.log(`Type\nWeakness\n`);
 
   return prompt(message);
@@ -59,14 +61,13 @@ const getFilterInputs = () => {
 
   const userOption = getOptionInput(categoryOptions, category);
   const option = validateOption(userOption, categoryOptions, category);
-  
+
   return { category, option };
 };
 
 const main = () => {
-  console.clear();
   const { category, option } = getFilterInputs();
-  
+
   console.log(filterPokemons(category, option));
 };
 

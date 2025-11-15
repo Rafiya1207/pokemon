@@ -22,27 +22,32 @@ const getOptionInput = (categoryOptions, category, optionMsg) => {
   return prompt(optionMsg);
 };
 
-const getFilterCategory = (message) => {
+const getFilterCategory = (message = "Enter Category: ") => {
   console.log(`Type\nWeakness\n`);
 
   return prompt(message);
 };
 
+const validateCategory = (userInput) => {
+  if (isValidCategory(userInput)) {
+    return userInput;
+  }
+  return validateCategory(getFilterCategory("Enter Valid Category: "));
+};
+
 const getFilterInputs = (
-  categoryMsg = "Enter Category: ",
   optionMsg = "Enter Option: ",
 ) => {
-  const category = getFilterCategory(categoryMsg).toLowerCase();
+  const userCategory = getFilterCategory().toLowerCase();
+  const category = validateCategory(userCategory);
 
-  if (isValidCategory(category)) {
-    const categoryOptions = selectCategoryMap(category);
-    const userInput = getOptionInput(categoryOptions, category, optionMsg);
+  const categoryOptions = selectCategoryMap(category);
+  const userOption = getOptionInput(categoryOptions, category, optionMsg);
 
-    if (isValidOption(userInput, categoryOptions)) {
-      return { category, userInput };
-    }
-    
+  if (isValidOption(userOption, categoryOptions)) {
+    return { category, userOption };
   }
+
   return getFilterInputs("Enter Valid Category: ", optionMsg);
 };
 

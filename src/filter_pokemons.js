@@ -1,19 +1,19 @@
 import { typeMap, weaknessMap } from "./filter_criteria.js";
 import { pokemons } from "./pokedox.js";
 
-export const selectCategory = (category) => {
-  const categories = {
+export const selectCategoryMap = (category) => {
+  const categoryMaps = {
     "weakness": weaknessMap,
     "type": typeMap,
   };
-  return categories[category];
+  return categoryMaps[category];
 };
 
-export const filterBy = (category, criteria) =>
+export const filterByCategory = (category, criteria) =>
   pokemons
     .filter((pokemon) => pokemon[category].includes(criteria));
 
-export const filterPokemons = (category, criteria) => {
-  const actualKey = selectCategory(category);
-  return filterBy(category, actualKey[criteria].toLowerCase());
+export const filterPokemons = (category, tag) => {
+  const categoryMap = selectCategoryMap(category);
+  return filterByCategory(category, categoryMap[tag].toLowerCase());
 };

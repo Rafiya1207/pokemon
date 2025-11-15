@@ -1,12 +1,12 @@
-import { filterPokemons, selectCategory } from "./src/filter_pokemons.js";
+import { filterPokemons, selectCategoryMap } from "./src/filter_pokemons.js";
 
 const getOptionInput = (categoryOptions, category) => {
   console.log(
     `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
   );
 
-  for (const code in categoryOptions) {
-    console.log(`${code}: ${categoryOptions[code]}`);
+  for (const tag in categoryOptions) {
+    console.log(`${tag}: ${categoryOptions[tag]}`);
   }
   return prompt("Enter Option: ");
 };
@@ -19,7 +19,7 @@ const getFilterCategory = () => {
 
 const getFilterInputs = () => {
   const category = getFilterCategory().toLowerCase();
-  const categoryOptions = selectCategory(category);
+  const categoryOptions = selectCategoryMap(category);
   const userInput = getOptionInput(categoryOptions, category);
   return { category, userInput };
 };

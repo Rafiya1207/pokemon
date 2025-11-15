@@ -1,4 +1,7 @@
-import { filterPokemons, selectCategoryMap } from "./src/filter_pokemons.js";
+import {
+  filterPokemons,
+  selectCategoryMap,
+} from "./src/filter-pokemons/filter_pokemons.js";
 
 const getOptionInput = (categoryOptions, category) => {
   console.log(

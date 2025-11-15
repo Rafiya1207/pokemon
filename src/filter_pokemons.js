@@ -1,6 +1,5 @@
 import { typeMap, weaknessMap } from "./filter_criteria.js";
 import { pokemons } from "./pokedox.js";
-import { dbg } from "../tests/filter_pokemons_test.js";
 
 export const selectCategory = (category) => {
   const categories = {

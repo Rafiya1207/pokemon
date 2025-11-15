@@ -5,10 +5,10 @@ const getOptionInput = (categoryOptions, category) => {
     `\nFilter Pokemons By ${category[0].toUpperCase() + category.slice(1)}`,
   );
 
-  for (const key in categoryOptions) {
-    console.log(`${key}: ${categoryOptions[key]}`);
+  for (const code in categoryOptions) {
+    console.log(`${code}: ${categoryOptions[code]}`);
   }
-  return prompt("Enter Selection: ");
+  return prompt("Enter Option: ");
 };
 
 const getFilterCategory = () => {

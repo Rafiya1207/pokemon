@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "type": "node",
-      "program": "${workspaceFolder}/src/sort/sort_pokemons.js",
+      "program": "${workspaceFolder}/src/data/pokedox.js",
       "cwd": "${workspaceFolder}",
       "env": {},
       "runtimeExecutable": "/usr/local/bin/deno",
